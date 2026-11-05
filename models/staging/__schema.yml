@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Staging Model for Transactional Customers"
+  
+  - name: stg_marketing_emails
+    description: "Staging Model for Marketing Emails"
+
+  - name: stg_order_lines
+    description: "Staging Model for Transactional Order Lines"
+
+  - name: stg_orders
+    description: "Staging Model for Transactional Orders"
+
+  - name: stg_products
+    description: "Staging Model for Transactional Products"
+
+  - name: stg_promotional_campaigns
+    description: "Staging Model for Transactional Promotional Campaigns"
