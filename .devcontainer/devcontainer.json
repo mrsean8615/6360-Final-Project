@@ -2,6 +2,8 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/debian
 {
 	"name": "Debian",
+	"onCreateCommand": "curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update",
+
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/base:trixie",
 	"customizations": {
