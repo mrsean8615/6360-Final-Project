@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_campaigns
+    description: "Promotional Campaign Dimension"
+
+  - name: dim_customers
+    description: |
+      Customer Dimension.
+      Also includes subscribers who are not yet customers
+
+  - name: dim_dates
+    description: "Date Dimension"
+
+  - name: dim_emails
+    description: "Email Dimension"
+
+  - name: dim_products
+    description: "Product Dimension"
+
+  - name: fact_email_events
+    description: |
+      Marketing Email Events Fact.
+      The grain of this table is customer + email + event
+      Each row represents a discrete event for a single customer on a single email
+
+  - name: fact_sales
+    description: |
+      Sales Fact.
+      Each row represents a discrete line item of a customer order
