@@ -1,10 +1,5 @@
 # Project Deliverable 2
 
-
-## Extract and Load (FiveTran)
-
-
-
 ## Transform (dbt)
 
 ### Define Materialization
