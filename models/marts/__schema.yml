@@ -53,6 +53,30 @@ models:
         data_tests:
           - unique
           - not_null
+      - name: campaign_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_campaigns')
+                field: campaign_key
+      - name: customer_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_key
+      - name: email_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_emails')
+                field: email_key
+      - name: date_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_dates')
+                field: date_key
       - name: event_type
         data_tests:
           - accepted_values:
@@ -71,3 +95,27 @@ models:
         data_tests:
           - unique
           - not_null
+      - name: date_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_dates')
+                field: date_key
+      - name: customer_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_key
+      - name: product_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: product_key
+      - name: campaign_key
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_campaigns')
+                field: campaign_key
