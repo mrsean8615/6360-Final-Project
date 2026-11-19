@@ -53,6 +53,14 @@ models:
         data_tests:
           - unique
           - not_null
+      - name: event_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - CLICK
+                  - OPEN
+                  - SENT
 
   - name: fact_sales
     description: |
