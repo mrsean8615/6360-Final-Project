@@ -3,18 +3,48 @@ version: 2
 models:
   - name: stg_customers
     description: "Staging Model for Transactional Customers"
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null
   
   - name: stg_marketing_emails
     description: "Staging Model for Marketing Emails"
+    columns:
+      - name: email_event_id
+        data_tests:
+          - unique
+          - not_null
 
   - name: stg_order_lines
     description: "Staging Model for Transactional Order Lines"
+    columns:
+      - name: order_line_id
+        data_tests:
+          - unique
+          - not_null
 
   - name: stg_orders
     description: "Staging Model for Transactional Orders"
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
 
   - name: stg_products
     description: "Staging Model for Transactional Products"
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+          - not_null
 
   - name: stg_promotional_campaigns
     description: "Staging Model for Transactional Promotional Campaigns"
+    columns:
+      - name: campaign_id
+        data_tests:
+          - unique
+          - not_null
