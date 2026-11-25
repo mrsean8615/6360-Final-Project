@@ -1,0 +1,104 @@
+table DIM_DATES
+	lineageTag: cfab3442-58b2-48f9-bbba-24998d4a7542
+
+	column DATE_KEY
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b9305ba2-34b6-4004-91d1-e84efcd6a01e
+		summarizeBy: none
+		sourceColumn: DATE_KEY
+
+		variation Variation
+			isDefault
+			relationship: 3876b3cd-b815-41f5-ad0c-d8e41253fbd2
+			defaultHierarchy: LocalDateTable_dd2df0b6-49e8-4d69-9478-6aecf922b1cd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FULL_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 057f9bcf-230d-40ce-927c-78c9bf59ecad
+		summarizeBy: none
+		sourceColumn: FULL_DATE
+
+		variation Variation
+			isDefault
+			relationship: 4661f8af-4d78-44fa-ab0f-237ae4fd92a0
+			defaultHierarchy: LocalDateTable_2501fb6e-70bf-4ecf-96f8-ca0fcacc4b3d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DAY_OF_WEEK
+		dataType: double
+		lineageTag: b3f29d8c-cf23-43a4-b93f-603d767e4512
+		summarizeBy: sum
+		sourceColumn: DAY_OF_WEEK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WEEK_OF_YEAR
+		dataType: double
+		lineageTag: 3ef1fe87-3e3a-4fc8-8a79-72251aaccf23
+		summarizeBy: sum
+		sourceColumn: WEEK_OF_YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MONTH_NUMBER
+		dataType: double
+		lineageTag: 009c2b17-adaa-4026-aab1-a38440e11949
+		summarizeBy: sum
+		sourceColumn: MONTH_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MONTH_NAME
+		dataType: string
+		lineageTag: 830fa610-5029-4c8d-a2e2-9e11fe74cac6
+		summarizeBy: none
+		sourceColumn: MONTH_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column QUARTER_OF_YEAR
+		dataType: double
+		lineageTag: 87e9c5bc-77ea-4a75-afdc-2f4f91a54c18
+		summarizeBy: sum
+		sourceColumn: QUARTER_OF_YEAR
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column YEAR_NUMBER
+		dataType: double
+		lineageTag: d400c16a-8a9e-4bd7-98d4-1163d7ac3c44
+		summarizeBy: sum
+		sourceColumn: YEAR_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_DATES = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("PAAHMSZ-GH18887.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    GROUP1PROJECT_Database = Source{[Name="GROUP1PROJECT",Kind="Database"]}[Data],
+				    DW_ECOESSENTIALS_Schema = GROUP1PROJECT_Database{[Name="DW_ECOESSENTIALS",Kind="Schema"]}[Data],
+				    DIM_DATES_Table = DW_ECOESSENTIALS_Schema{[Name="DIM_DATES",Kind="Table"]}[Data]
+				in
+				    DIM_DATES_Table
+

@@ -1,0 +1,30 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["FACT_SALES","FACT_EMAIL_EVENTS","DIM_PRODUCTS","DIM_EMAILS","DIM_DATES","DIM_CUSTOMERS","DIM_CAMPAIGNS"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table FACT_SALES
+ref table DateTableTemplate_b5937bf8-4a8c-433b-b028-ffb0ba71e8a7
+ref table LocalDateTable_e96550e6-106e-405d-b1c0-e93da0096cfa
+ref table FACT_EMAIL_EVENTS
+ref table LocalDateTable_ced1fd8e-931e-483a-b93d-66429104932d
+ref table DIM_PRODUCTS
+ref table DIM_EMAILS
+ref table DIM_DATES
+ref table LocalDateTable_dd2df0b6-49e8-4d69-9478-6aecf922b1cd
+ref table LocalDateTable_2501fb6e-70bf-4ecf-96f8-ca0fcacc4b3d
+ref table DIM_CUSTOMERS
+ref table DIM_CAMPAIGNS
+
+ref cultureInfo en-US
+

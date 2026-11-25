@@ -1,0 +1,60 @@
+table DIM_PRODUCTS
+	lineageTag: d485786f-2e70-46a8-8952-60f31f609258
+
+	column PRODUCT_KEY
+		dataType: double
+		lineageTag: 2b4fbbf9-63c1-44ed-a0b9-f7902ecfd3a9
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRODUCT_ID
+		dataType: double
+		lineageTag: f6f2deea-a629-42b5-9e71-d5c4d3869ab9
+		summarizeBy: none
+		sourceColumn: PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRODUCT_TYPE
+		dataType: string
+		lineageTag: 6fcb45ed-5edf-4243-9950-a06649f50833
+		summarizeBy: none
+		sourceColumn: PRODUCT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_NAME
+		dataType: string
+		lineageTag: 06ee5733-d84d-4117-8fbc-4e8e1792a9fc
+		summarizeBy: none
+		sourceColumn: PRODUCT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRICE
+		dataType: double
+		lineageTag: 78f74e75-09dd-4fc3-b4de-59fc3277ffc1
+		summarizeBy: none
+		sourceColumn: PRICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_PRODUCTS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("PAAHMSZ-GH18887.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    GROUP1PROJECT_Database = Source{[Name="GROUP1PROJECT",Kind="Database"]}[Data],
+				    DW_ECOESSENTIALS_Schema = GROUP1PROJECT_Database{[Name="DW_ECOESSENTIALS",Kind="Schema"]}[Data],
+				    DIM_PRODUCTS_Table = DW_ECOESSENTIALS_Schema{[Name="DIM_PRODUCTS",Kind="Table"]}[Data]
+				in
+				    DIM_PRODUCTS_Table
+

@@ -1,0 +1,125 @@
+table FACT_SALES
+	lineageTag: 64e7900d-512e-4474-b904-59785c5d9abc
+
+	column SALES_KEY
+		dataType: string
+		lineageTag: 92c14314-8c85-41ff-9e61-2cd219a41ebd
+		summarizeBy: none
+		sourceColumn: SALES_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE_KEY
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 64d887c9-967a-4ccd-8f8b-24d4427df515
+		summarizeBy: none
+		sourceColumn: DATE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CUSTOMER_KEY
+		dataType: string
+		lineageTag: 64fc7207-2838-4fdf-a491-dd283339c2ef
+		summarizeBy: none
+		sourceColumn: CUSTOMER_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: double
+		lineageTag: fe399034-97f7-46ca-b95c-d78315ff6807
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CAMPAIGN_KEY
+		dataType: double
+		lineageTag: fe730782-2190-470b-89d0-712f69b5a18e
+		summarizeBy: none
+		sourceColumn: CAMPAIGN_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ORDER_LINE_ID
+		dataType: double
+		lineageTag: 81b71a65-f14c-4e35-838c-6ad0291bee5c
+		summarizeBy: count
+		sourceColumn: ORDER_LINE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ORDER_ID
+		dataType: double
+		lineageTag: b817b126-4dfa-4df2-9653-783adf428ec0
+		summarizeBy: count
+		sourceColumn: ORDER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ORDER_TIMESTAMP
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4060ef40-db4a-498e-8855-12ed86ebb4d4
+		summarizeBy: none
+		sourceColumn: ORDER_TIMESTAMP
+
+		variation Variation
+			isDefault
+			relationship: 783c0788-e78d-41b8-87fd-94a04c96fb29
+			defaultHierarchy: LocalDateTable_e96550e6-106e-405d-b1c0-e93da0096cfa.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column QUANTITY
+		dataType: double
+		lineageTag: 0799b0c1-1dcc-4fcd-b00c-d023aee3eb59
+		summarizeBy: sum
+		sourceColumn: QUANTITY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DISCOUNT
+		dataType: double
+		lineageTag: 8d7bf82a-7a40-4ff6-a5ca-c10a395d3352
+		summarizeBy: sum
+		sourceColumn: DISCOUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRICE_AFTER_DISCOUNT
+		dataType: double
+		lineageTag: b51d094a-e081-4725-a638-5af27220a2e7
+		summarizeBy: sum
+		sourceColumn: PRICE_AFTER_DISCOUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition FACT_SALES = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("PAAHMSZ-GH18887.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    GROUP1PROJECT_Database = Source{[Name="GROUP1PROJECT",Kind="Database"]}[Data],
+				    DW_ECOESSENTIALS_Schema = GROUP1PROJECT_Database{[Name="DW_ECOESSENTIALS",Kind="Schema"]}[Data],
+				    FACT_SALES_Table = DW_ECOESSENTIALS_Schema{[Name="FACT_SALES",Kind="Table"]}[Data]
+				in
+				    FACT_SALES_Table
+
