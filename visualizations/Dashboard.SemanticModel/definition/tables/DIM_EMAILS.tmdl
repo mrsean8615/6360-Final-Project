@@ -1,0 +1,44 @@
+table DIM_EMAILS
+	lineageTag: c8cf29ba-d0e1-4c7b-93ee-110fd6ffeac6
+
+	column EMAIL_KEY
+		dataType: double
+		lineageTag: 32e89962-4a81-41bd-a30a-d5b54353aba9
+		summarizeBy: none
+		sourceColumn: EMAIL_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EMAIL_ID
+		dataType: double
+		lineageTag: e6864f4f-f435-467b-b9c0-9e0393547ecc
+		summarizeBy: none
+		sourceColumn: EMAIL_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EMAIL_NAME
+		dataType: string
+		lineageTag: 6a435708-436f-48c8-9b71-27acfe291533
+		summarizeBy: none
+		sourceColumn: EMAIL_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_EMAILS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("PAAHMSZ-GH18887.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    GROUP1PROJECT_Database = Source{[Name="GROUP1PROJECT",Kind="Database"]}[Data],
+				    DW_ECOESSENTIALS_Schema = GROUP1PROJECT_Database{[Name="DW_ECOESSENTIALS",Kind="Schema"]}[Data],
+				    DIM_EMAILS_Table = DW_ECOESSENTIALS_Schema{[Name="DIM_EMAILS",Kind="Table"]}[Data]
+				in
+				    DIM_EMAILS_Table
+
+	annotation PBI_ResultType = Table
+

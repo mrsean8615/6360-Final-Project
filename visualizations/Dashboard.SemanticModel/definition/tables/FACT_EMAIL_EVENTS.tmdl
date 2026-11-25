@@ -1,0 +1,83 @@
+table FACT_EMAIL_EVENTS
+	lineageTag: bf49919d-29ff-4bfa-a392-9c6d50dd9e05
+
+	column EMAIL_EVENT_KEY
+		dataType: string
+		lineageTag: 8046ea02-978d-4a9f-bc8b-02b604309ea2
+		summarizeBy: none
+		sourceColumn: EMAIL_EVENT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAMPAIGN_KEY
+		dataType: double
+		lineageTag: c49c7226-ec49-47f4-bc5c-c1cbfedc2ee1
+		summarizeBy: none
+		sourceColumn: CAMPAIGN_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CUSTOMER_KEY
+		dataType: string
+		lineageTag: 12da8b28-5a17-48df-b864-695f69bdfd1a
+		summarizeBy: none
+		sourceColumn: CUSTOMER_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column EMAIL_KEY
+		dataType: double
+		lineageTag: dbd77ae4-67f8-449a-9e22-7f3b770716fe
+		summarizeBy: none
+		sourceColumn: EMAIL_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DATE_KEY
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f0dff2f5-7e7e-4a89-bd4a-c11e563b0c0f
+		summarizeBy: none
+		sourceColumn: DATE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EVENT_TIMESTAMP
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d7f199ea-8187-4c7c-b903-6cef43d60128
+		summarizeBy: none
+		sourceColumn: EVENT_TIMESTAMP
+
+		variation Variation
+			isDefault
+			relationship: 4f567e86-3d52-4a8a-b21c-87b6b7e1165b
+			defaultHierarchy: LocalDateTable_ced1fd8e-931e-483a-b93d-66429104932d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column EVENT_TYPE
+		dataType: string
+		lineageTag: 7c6cd457-2319-453b-bdd7-31ee2531acf4
+		summarizeBy: none
+		sourceColumn: EVENT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FACT_EMAIL_EVENTS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("PAAHMSZ-GH18887.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    GROUP1PROJECT_Database = Source{[Name="GROUP1PROJECT",Kind="Database"]}[Data],
+				    DW_ECOESSENTIALS_Schema = GROUP1PROJECT_Database{[Name="DW_ECOESSENTIALS",Kind="Schema"]}[Data],
+				    FACT_EMAIL_EVENTS_Table = DW_ECOESSENTIALS_Schema{[Name="FACT_EMAIL_EVENTS",Kind="Table"]}[Data]
+				in
+				    FACT_EMAIL_EVENTS_Table
+

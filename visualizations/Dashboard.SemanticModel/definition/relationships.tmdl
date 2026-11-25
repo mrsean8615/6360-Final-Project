@@ -1,0 +1,52 @@
+relationship 783c0788-e78d-41b8-87fd-94a04c96fb29
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_SALES.ORDER_TIMESTAMP
+	toColumn: LocalDateTable_e96550e6-106e-405d-b1c0-e93da0096cfa.Date
+
+relationship 4f567e86-3d52-4a8a-b21c-87b6b7e1165b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FACT_EMAIL_EVENTS.EVENT_TIMESTAMP
+	toColumn: LocalDateTable_ced1fd8e-931e-483a-b93d-66429104932d.Date
+
+relationship 3876b3cd-b815-41f5-ad0c-d8e41253fbd2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_DATES.DATE_KEY
+	toColumn: LocalDateTable_dd2df0b6-49e8-4d69-9478-6aecf922b1cd.Date
+
+relationship 4661f8af-4d78-44fa-ab0f-237ae4fd92a0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_DATES.FULL_DATE
+	toColumn: LocalDateTable_2501fb6e-70bf-4ecf-96f8-ca0fcacc4b3d.Date
+
+relationship 2767d318-805c-327c-96a9-cbb06758e901
+	fromColumn: FACT_SALES.CAMPAIGN_KEY
+	toColumn: DIM_CAMPAIGNS.CAMPAIGN_ID
+
+relationship 21066dd9-40e2-5c6d-0248-26f645c350e6
+	fromColumn: FACT_SALES.PRODUCT_KEY
+	toColumn: DIM_PRODUCTS.PRODUCT_KEY
+
+relationship 232b15df-42e6-8deb-270e-1d171977b7f2
+	fromColumn: FACT_EMAIL_EVENTS.CUSTOMER_KEY
+	toColumn: DIM_CUSTOMERS.CUSTOMER_KEY
+
+relationship d2b0c01d-25d5-5dc3-15ba-f333524c5b0e
+	fromColumn: FACT_EMAIL_EVENTS.EMAIL_KEY
+	toColumn: DIM_EMAILS.EMAIL_KEY
+
+relationship 9d91dcde-f4ff-f168-fbaa-60767bcfdb65
+	fromColumn: FACT_EMAIL_EVENTS.DATE_KEY
+	toColumn: DIM_DATES.DATE_KEY
+
+relationship 750ddf2f-7b4b-7700-c206-96673b20a6f3
+	fromColumn: FACT_SALES.DATE_KEY
+	toColumn: DIM_DATES.DATE_KEY
+
+relationship 2b174cc6-cf54-e4d8-1382-608956ee44d6
+	fromColumn: FACT_SALES.CUSTOMER_KEY
+	toColumn: DIM_CUSTOMERS.CUSTOMER_KEY
+
+relationship e6aa110e-bafb-8e80-8352-24e92435b3cc
+	fromColumn: FACT_EMAIL_EVENTS.CAMPAIGN_KEY
+	toColumn: DIM_CAMPAIGNS.CAMPAIGN_KEY
+

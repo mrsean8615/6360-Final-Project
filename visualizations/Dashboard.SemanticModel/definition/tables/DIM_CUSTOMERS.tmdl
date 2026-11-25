@@ -1,0 +1,116 @@
+table DIM_CUSTOMERS
+	lineageTag: ff94693e-87ce-4468-bff5-706d742464b5
+
+	column CUSTOMER_KEY
+		dataType: string
+		lineageTag: 286db6f3-3f23-4595-a2ec-ba533f82da9f
+		summarizeBy: none
+		sourceColumn: CUSTOMER_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_ID
+		dataType: double
+		lineageTag: 32e08481-b99f-488d-9564-b61f0393ba9a
+		summarizeBy: count
+		sourceColumn: CUSTOMER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SUBSCRIBER_ID
+		dataType: double
+		lineageTag: bf00e553-7811-419a-b6e8-153e48f95e2d
+		summarizeBy: count
+		sourceColumn: SUBSCRIBER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FIRST_NAME
+		dataType: string
+		lineageTag: dcf1b896-a05a-4623-94d2-23541a33f592
+		summarizeBy: none
+		sourceColumn: FIRST_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_NAME
+		dataType: string
+		lineageTag: d6f7288f-70fd-4420-9285-99df234ea266
+		summarizeBy: none
+		sourceColumn: LAST_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_EMAIL
+		dataType: string
+		lineageTag: 3392d212-20ad-4c0f-a99f-fe97a176020e
+		summarizeBy: none
+		sourceColumn: CUSTOMER_EMAIL
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_PHONE
+		dataType: string
+		lineageTag: b6132279-bb7f-42fe-a7ff-874001dde360
+		summarizeBy: none
+		sourceColumn: CUSTOMER_PHONE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_ADDRESS
+		dataType: string
+		lineageTag: 02affbd7-0cd1-4a9a-8449-c3b45738f48e
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ADDRESS
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_STATE
+		dataType: string
+		lineageTag: a9df071a-e9f4-479c-a928-d4f82b992e50
+		summarizeBy: none
+		sourceColumn: CUSTOMER_STATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_COUNTRY
+		dataType: string
+		lineageTag: 242d98ca-24e1-43c0-a48a-a23a456efa3e
+		summarizeBy: none
+		sourceColumn: CUSTOMER_COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_CITY
+		dataType: string
+		lineageTag: 9d154cde-b76a-44c8-aada-3094b7a7e91d
+		summarizeBy: none
+		sourceColumn: CUSTOMER_CITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_ZIP
+		dataType: string
+		lineageTag: 857c87d5-75d6-4ec8-ab7a-5273e1dbe7a6
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ZIP
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_CUSTOMERS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("PAAHMSZ-GH18887.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    GROUP1PROJECT_Database = Source{[Name="GROUP1PROJECT",Kind="Database"]}[Data],
+				    DW_ECOESSENTIALS_Schema = GROUP1PROJECT_Database{[Name="DW_ECOESSENTIALS",Kind="Schema"]}[Data],
+				    DIM_CUSTOMERS_Table = DW_ECOESSENTIALS_Schema{[Name="DIM_CUSTOMERS",Kind="Table"]}[Data]
+				in
+				    DIM_CUSTOMERS_Table
+
+	annotation PBI_ResultType = Table
+

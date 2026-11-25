@@ -1,0 +1,113 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 528.14397653487993,
+            "y": 642.99364586697459
+          },
+          "nodeIndex": "DIM_CAMPAIGNS",
+          "nodeLineageTag": "102d62d1-fb09-4509-a0a3-4aef9cadb5ad",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 360.49689997475519,
+            "y": 0
+          },
+          "nodeIndex": "DIM_CUSTOMERS",
+          "nodeLineageTag": "ff94693e-87ce-4468-bff5-706d742464b5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 696.22353221395076,
+            "y": 0
+          },
+          "nodeIndex": "DIM_DATES",
+          "nodeLineageTag": "cfab3442-58b2-48f9-bbba-24998d4a7542",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1042.5974239769598,
+            "y": 108.51865233739494
+          },
+          "nodeIndex": "DIM_EMAILS",
+          "nodeLineageTag": "c8cf29ba-d0e1-4c7b-93ee-110fd6ffeac6",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "DIM_PRODUCTS",
+          "nodeLineageTag": "d485786f-2e70-46a8-8952-60f31f609258",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 875.65340098725869,
+            "y": 349.94988952240703
+          },
+          "nodeIndex": "FACT_EMAIL_EVENTS",
+          "nodeLineageTag": "bf49919d-29ff-4bfa-a392-9c6d50dd9e05",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 165.53670188600364,
+            "y": 344.80963238892343
+          },
+          "nodeIndex": "FACT_SALES",
+          "nodeLineageTag": "64e7900d-512e-4474-b904-59785c5d9abc",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 70.95554390096882,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

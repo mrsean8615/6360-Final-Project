@@ -1,0 +1,54 @@
+table DIM_CAMPAIGNS
+	lineageTag: 102d62d1-fb09-4509-a0a3-4aef9cadb5ad
+
+	column CAMPAIGN_KEY
+		dataType: double
+		lineageTag: ea7ae15e-b918-4e61-b4ff-c0ee4c458d47
+		summarizeBy: none
+		sourceColumn: CAMPAIGN_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CAMPAIGN_ID
+		dataType: double
+		lineageTag: 3760a8c2-57e6-438c-b27e-3b2dd37d2c43
+		summarizeBy: none
+		sourceColumn: CAMPAIGN_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CAMPAIGN_NAME
+		dataType: string
+		lineageTag: 2b09a256-ffbc-4ebd-845e-84860f56358c
+		summarizeBy: none
+		sourceColumn: CAMPAIGN_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CAMPAIGN_DISCOUNT
+		dataType: double
+		lineageTag: 54788cf2-0f62-4485-9412-570bb72b732e
+		summarizeBy: sum
+		sourceColumn: CAMPAIGN_DISCOUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DIM_CAMPAIGNS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("PAAHMSZ-GH18887.snowflakecomputing.com","COMPUTE_WH",[Implementation="2.0"]),
+				    GROUP1PROJECT_Database = Source{[Name="GROUP1PROJECT",Kind="Database"]}[Data],
+				    DW_ECOESSENTIALS_Schema = GROUP1PROJECT_Database{[Name="DW_ECOESSENTIALS",Kind="Schema"]}[Data],
+				    DIM_CAMPAIGNS_Table = DW_ECOESSENTIALS_Schema{[Name="DIM_CAMPAIGNS",Kind="Table"]}[Data]
+				in
+				    DIM_CAMPAIGNS_Table
+
+	annotation PBI_ResultType = Table
+
